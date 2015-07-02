@@ -69,6 +69,36 @@
   After you have created the marker for your map you can assign it to a map after it has been loaded using the "marker.setMap(map);" method. All this is doing is telling your marker variable to be added to a google map in this instance it is being added to the google map in the variable "map". Which is why map is found within the parenthesis.
 </p>
 
+<h2>Remove a Marker</h2>
+
+<p>If you would like to remove a marker that you haveplaced on a google map then you can simple enter "marker.setMap(null)" after you have set a marker on a map.</p>
+
+<p>It is important to not that this doens not delete the marker but rather it removes the marker from being placed in your google map. Although this is good information for you to know as the developer the user will be none the wiser.</p>
+
+
+<h2>How to create a custom Marker</h2>
+
+<p>
+  In order to make your google maps API super fancy you can switch the typical marker icon with a custom marker that you have created!.
+</p>
+
+<p>Adding an image to customize your google maps marker is pretty simple. If you were able to have your google maps makrer display on your Google Map then you can also add a Simple Icon to replace the marker!</p>
+
+<p>In order to replace the regular marker icon all you have to do is tell the API where the Image in located that you would like to use. and in the marker object set the icon to the variable name you gave your image.</p>
+
+<p><span>
+  var image = 'images/happyface.jpg';
+  var myLatLng = new google.maps.LatLng(-33.890542, 151.274856);
+  var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      icon: image
+  });
+</span></p>
+
+<p>That is all that you have to do inorder to change the default icon to the a custom image. Once the "icon" property is set to your image the Google Maps API will do all the work necesarry to resize the image so you don't have a massive image where your marker should be!</p>
+
+<p>That's all there is! There are plenty of other cool things that the google Maps API can do tho. It doens't stop at set markers on a map and making custom map markers. That's only the beginning! Visit the other pages of this site to find out all the other awesome thing that you can do with the Google Maps API!</p>
 
 </body>
 </html>
