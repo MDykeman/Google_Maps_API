@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How To: Style Google Maps</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  
+      
+    <!--googles style API-->
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+      
+
+      <script>
+      window.onload = function(){
+
+    var styles = [
+      {
+            featureType: 'water',
+            elementType: 'geometry',
+            stylers: [
+              { color: "#243247" }
+            ]
+      },
+      { 
+            featureType: 'landscape',
+            elementType: 'geometry.fill',
+            stylers: [
+             { color: "#262626" }
+            ]
+      },
+      {
+            featureType: 'road',
+            elementType: 'geometry',
+            stylers: [
+                { color: "#474747" }
+            ]
+      },
+        {
+            featureType: 'road',
+            elementType: 'labels',
+            stylers: [
+                { color: "#C7C7C7" }
+            ]
+      },
+        {
+            featureType: 'road',
+            elementType: 'labels.stroke',
+            stylers: [
+                { color: "#474747" }
+            ]
+      }
+        
+        ];
+          
+
+          var options = {
+        mapTypeControlOptions: {
+            mapTypeIds: ['Styled']
+        },
+            center: new google.maps.LatLng(43.1304559, -80.73805),
+            zoom: 11,
+            disableDefaultUI: true, 
+            mapTypeId: 'Styled'
+        };
+        var div = document.getElementById('map-canvas');
+        var map = new google.maps.Map(div, options);
+        var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
+        map.mapTypes.set('Styled', styledMapType);
+
+
+        map.setOptions({styles: styles});
+    
+      }
+      </script>
+      
+  </head>
+  <body>
+      <h1>How To: Style Google Maps</h1>
+      <h2>Intro:</h2>
+      <p>In these instructions you will be able to utilize the Google Maps API,
+          and style the map to suit your needs. You should be familiar with basic code editors, CSS, HTML and Javascript.
+      This isn't going to be hard!</p>
+      
+      <h2>Set up a basic page and get Google Maps:</h2>
+      <p>Go <a href='https://developers.google.com/maps/documentation/javascript/examples/map-simple'>here.</a> Grab the code(click on the 'Javascript + HTML' button) and paste it into your editor. Now you have a map.</p>
+      <p>Now you have a map.</p>
+      
+      <h2>Targeting your "map-canvas" DIV in CSS:</h2>
+      <p>Create a CSS file and link it to your page. Once you have your CSS file linked correctly you will be able to start manipulating style attributes. Start with the width of your map by typing this in your CSS file:<br /> <span>#map-canvas {<br /> width: 80vw;<br /> }.</span></p>
+      <p>If the width of your map DIV changes, you have linked the CSS correctly; you can now use other CSS attributes.</p>
+      
+      <h2>Modify the style of your map:</h2>
+      <p>Wrap your map code in a window.onload function like so:<br />
+          window.onload = function(){<br />
+          YOUR MAPS CODE HERE<br />
+          }<br />place this code below your map's code, but still within the onload function:<br /><span> var styles = [<br />
+    {<br />
+        featureType: 'water',<br />
+        elementType: 'geometry.fill',<br />
+        stylers: [<br />
+            { color: '#adc9b8' }<br />
+        ]<br />
+    }<br />
+];</span></p>
+      <p>The 'featureType' selects parts of the map like water, roads and landscapes. The 'elementType' selects what you want to change, such as the fill or shape. The 'stylers' allows you to specify what you changing about it, such as the color or transparency.</p>
+      <p>Connect your styles to your map by placing this line of code at the bottom of your onload function:<br />map.setOptions({styles: styles});<br />The 'styles' portion will be the variable that you called your styles.</p>
+      
+    <div id="map-canvas"></div>
+      <h2>Example of styles.</h2>
+      <p>Here is the styling for the above map just incase some details were vague.</p>
+      <p>var styles = [
+      {
+            featureType: 'water',
+            elementType: 'geometry',
+            stylers: [
+              { color: "#243247" }
+            ]
+      },
+      { 
+            featureType: 'landscape',
+            elementType: 'geometry.fill',
+            stylers: [
+             { color: "#262626" }
+            ]
+      },
+      {
+            featureType: 'road',
+            elementType: 'geometry',
+            stylers: [
+                { color: "#474747" }
+            ]
+      },
+        {
+            featureType: 'road',
+            elementType: 'labels',
+            stylers: [
+                { color: "#C7C7C7" }
+            ]
+      },
+        {
+            featureType: 'road',
+            elementType: 'labels.stroke',
+            stylers: [
+                { color: "#474747" }
+            ]
+      }
+        
+        ];</p>
+  </body>
+</html>
