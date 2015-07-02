@@ -5,32 +5,12 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-   
-    <script src="stylemaps.js"></script>
-    <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>-->
-      
+  
       
     <!--googles style API-->
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
       
-      <!--MY MAP SCRIPT
-    <script>
-var map;
-function initialize() {
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    zoom: 8,
-    center: {lat: -34.397, lng: 150.644}
-  });
-}
 
-google.maps.event.addDomListener(window, 'load', initialize);
-
-    </script>-->
-      
-      
-      
-      
-    <!--tutorial script-->
       <script>
       window.onload = function(){
 
@@ -75,9 +55,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
           Go <a href='https://developers.google.com/maps/documentation/javascript/examples/map-simple'>here</a>
       to grab the code(click on the 'Javascript + HTML' button) and paste it into your editor.</p>
       <p>If this works, you will see Google Maps taking up your entire browser window, congratulations.</p>
-      <h2>Targeting your "map-canvas" div in CSS:</h2>
-      <p>Create a CSS file and link it to your page. Once you have your CSS file linked correctly you will be able to start manipulating style attributes. Start with the width by typing <span>#map-canvas { width: 80vw; }.</span></p>
-      <p>If the width of your map div changes, you have linked the CSS correctly; you can now use other CSS attributes.</p>
+      <h2>Targeting your "map-canvas" DIV in CSS:</h2>
+      <p>Create a CSS file and link it to your page. Once you have your CSS file linked correctly you will be able to start manipulating style attributes. Start with the width of your map by typing:<br /> <span>#map-canvas {<br /> width: 80vw;<br /> }.</span></p>
+      <p>If the width of your map DIV changes, you have linked the CSS correctly; you can now use other CSS attributes.</p>
+      <h2>Modify the style of your map:</h2>
+      <p>Now the fun part. Within your SCRIPT tag that holds your map, enclose your entire maps code within a function, a function that will be called when your window loads in your browser. Like this:<br />
+          window.onload = function(){<br />
+          YOUR MAPS CODE HERE<br />
+          }<br />place this code below your map's code:<br /><span> var styles = [<br />
+    {<br />
+        featureType: 'water',<br />
+        elementType: 'geometry.fill',<br />
+        stylers: [<br />
+            { color: '#adc9b8' }<br />
+        ]<br />
+    }<br />
+];</span></p>
       
     <div id="map-canvas"></div>
   </body>
