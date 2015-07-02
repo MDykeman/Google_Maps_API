@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How To: Plot Custom Points on the Google Maps</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+  <h1>How To: Plot Custom Makrers on the Google Maps</h1>
+
+  <h2>Intro</h2>
+  <p>
+    One of the most important things to be able to do while using the Google Maps API is to tell users where locations are on the Google Map.
+  </p>
+
+  <p>This page will be dedicated to showing how to plot markers onto a Google Map and creating your own custom markers!</p>
+
+  <h2>How to Plot a Marker using the Google Maps API</h2>
+
+  <p>
+    In the same Google Maps JavaScript file that you used to set up and display your google map on your page place this code.
+
+    <span>
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+        var mapOptions = {
+          zoom: 4,
+          center: myLatlng
+        }
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Hello World!'
+        });
+    }
+      });
+    </span>
+  </p>
+
+<h3>Quick Reminder</h3>
+
+<ul>
+  <li>The initialize function allows you to display the Google map on your page</li>
+  <li>The map variable tells the Google Maps Api where to place the Google Map on your html page.</li>
+</ul>
+
+<p>Now lets get to the marker variable.This as you may have guessed is how we create a marker to place in your Google Maps API.</p>
+
+<p>First of all to access the Marker Object through the API you will have to type "new google.maps.Marker". This will create a new Google Maps marker object. This lets you access all of the properties you need to have set up and customize your Google Maps API Marker.</p>
+
+<p>There are two <u>KEY</u> properties That are very important when you are making a marker. position and map</p>
+
+<ul>
+  <li>Position: Lets you tell the google maps api where to place the marker on your map. This must be in Longitude and Lattitude. *This is a required property</li>
+  <li>Map: This tells the Api which map your marker will display on. Without this property your marker will not be displayed on your google map.</li>
+</ul>
+
+<h2>Adding a Marker After you have created a Map</h2>
+
+<p>
+  But what if you want to place a marker on your map after the map has been loaded to the page? Not to fret we can to that too!
+</p>
+
+<p>
+  After you have created the marker for your map you can assign it to a map after it has been loaded using the "marker.setMap(map);" method. All this is doing is telling your marker variable to be added to a google map in this instance it is being added to the google map in the variable "map". Which is why map is found within the parenthesis.
+</p>
+
+
+</body>
+</html>
