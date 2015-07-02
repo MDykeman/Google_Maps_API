@@ -7,8 +7,8 @@
 
 </head>
 <body>
-
-  <h1>How To: Plot Custom Makrers on the Google Maps</h1>
+<div id="instructions" >
+  <h1>How To: Plot Custom Markers on the Google Maps</h1>
 
   <h2>Intro</h2>
   <p>
@@ -20,44 +20,47 @@
   <h2>How to Plot a Marker using the Google Maps API</h2>
 
   <p>
-    In the same Google Maps JavaScript file that you used to set up and display your google map on your page place this code.
+    In the same Google Maps JavaScript file that you used to set up and display your google map on your page place this code.</p>
 
-    <span>
-      function initialize() {
-        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
-        var mapOptions = {
-          zoom: 4,
-          center: myLatlng
-        }
-        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Hello World!'
-        });
-    }
-      });
-    </span>
-  </p>
-
+    <div class="code">
+        <p>
+      function initialize() {<br />
+        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);<br />
+        var mapOptions = {<br />
+          zoom: 4,<br />
+          center: myLatlng<br />
+        }<br /><br />
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);<br />
+<br />
+        var marker = new google.maps.Marker({<br />
+            position: myLatlng,<br />
+            map: map,<br />
+            title: 'Hello World!'<br />
+        });<br />
+    }<br />
+      });</p>
+    </div>
+  
+<div class="reminder" >
 <h3>Quick Reminder</h3>
 
 <ul>
   <li>The initialize function allows you to display the Google map on your page</li>
   <li>The map variable tells the Google Maps Api where to place the Google Map on your html page.</li>
 </ul>
-
+</div>
+    
 <p>Now lets get to the marker variable.This as you may have guessed is how we create a marker to place in your Google Maps API.</p>
 
 <p>First of all to access the Marker Object through the API you will have to type "new google.maps.Marker". This will create a new Google Maps marker object. This lets you access all of the properties you need to have set up and customize your Google Maps API Marker.</p>
 
-<p>There are two <u>KEY</u> properties That are very important when you are making a marker. position and map</p>
+    <div class='reminder' >
+    <h2>There are two KEY</h2><p> properties That are very important when you are making a marker. position and map</p>
 
 <ul>
   <li>Position: Lets you tell the google maps api where to place the marker on your map. This must be in Longitude and Lattitude. *This is a required property</li>
   <li>Map: This tells the Api which map your marker will display on. Without this property your marker will not be displayed on your google map.</li>
-</ul>
+</ul></div>
 
 <h2>Adding a Marker After you have created a Map</h2>
 
@@ -86,19 +89,20 @@
 
 <p>In order to replace the regular marker icon all you have to do is tell the API where the Image in located that you would like to use. and in the marker object set the icon to the variable name you gave your image.</p>
 
-<p><span>
-  var image = 'images/happyface.jpg';
-  var myLatLng = new google.maps.LatLng(-33.890542, 151.274856);
-  var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      icon: image
+<div class="code" >
+    <p>
+  var image = 'images/happyface.jpg';<br />
+  var myLatLng = new google.maps.LatLng(-33.890542, 151.274856);<br />
+  var marker = new google.maps.Marker({<br />
+      position: myLatLng,<br />
+      map: map,<br />
+      icon: image<br />
   });
-</span></p>
+</p></div>
 
 <p>That is all that you have to do inorder to change the default icon to the a custom image. Once the "icon" property is set to your image the Google Maps API will do all the work necesarry to resize the image so you don't have a massive image where your marker should be!</p>
 
 <p>That's all there is! There are plenty of other cool things that the google Maps API can do tho. It doens't stop at set markers on a map and making custom map markers. That's only the beginning! Visit the other pages of this site to find out all the other awesome thing that you can do with the Google Maps API!</p>
-
+</div>
 </body>
 </html>

@@ -4,6 +4,62 @@ html, body, #map-canvas {
     padding: 0px
 }
 
+body{
+    background-color: #303838;
+    font-family: helvetica, sans serif;
+    line-height: 1.5em;
+    color: #E0E09D;
+    letter-spacing: .05em;
+}
+
+a {
+    color: #E0E09D;
+}
+
+
+p{
+    display:block;
+    width:500px;
+
+}
+
+#instructions {
+    margin: 25px;
+}
+
 #map-canvas {
     width: 80vw;
 }
+
+span {
+    margin-left: 40px;
+}
+
+.code {
+    color: #E0E09D;
+    margin: 25px 0px 35px 0px;
+}
+
+.code p {
+    border: 1px #E0E09D solid;
+    padding: 25px;
+    display:block;
+    width: 500px;
+}
+
+h2 {
+    margin: 50px 0 0 0;
+}
+
+ul li{
+    width: 400px;
+    padding: 0;
+    margin: 0;
+}
+
+.reminder {
+    padding: 25px;
+    display:block;
+    width: 500px;
+    border: 1px #E0E09D dashed;
+    }
