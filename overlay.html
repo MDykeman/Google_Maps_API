@@ -1,16 +1,183 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Google Maps API</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div>overlay with google maps</div>
+        <div id="instructions">
+            
+        <h1>How to: Create a Custom Overlay using the Google Maps API</h1>
+        
+        <p>Overlays are objects on the Google Map that are defined by latitude and longitude coordinates</p>
+        <h2>Types</h2>
+        <ul>
+            <li>Marker</li>
+            <li>Polyline</li>
+            <li>Polygon</li>
+            <li>Circle and Rectangle</li>
+            <li>Custom Overlays</li>
+        </ul>
+        <p>This page will focus on custom overlays.</p>
+        
+        <p>The first step is to initialize the Google Maps API using JavaScript</p>
+        </div>
+        
+        <div class="code">
+            <p>    
+       function initialize() { <br />
+       var mapOptions = { <br />
+        zoom: 11, <br />
+        center: new google.maps.LatLng(62.323907, -150.109291), <br />
+        mapTypeId: google.maps.MapTypeId.SATELLITE <br />
+        };
+            </p> 
+        </div>
+        
+        <div id="instructions">
+            <p>After the Google Maps API has been initialized the next step is to initialize your 
+                image for the custom overlay</p>
+            
+            <p>In the next code snippet you can see that the overlay is being initialized by 
+            setting the latitute and longitude coordinates that will bind the image to the map.</p>
+        </div>
+         <div class="code">
+            <p>    
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        <br /><br />
+         var swBound = new google.maps.LatLng(62.281819, -150.287132); <br />
+         var neBound = new google.maps.LatLng(62.400471, -150.005608); <br />
+         var bounds = new google.maps.LatLngBounds(swBound, neBound); <br />
+            </p>
+         </div>
+         
+         <div id="instructions">
+             <p>Now that the coordinates have been set for the overlay, we need to identify an 
+             image for the overlay.</p>
+             <p>In the next code snippet you can see a black space where an image would be identified.</p>
+             <p>Finally, the overlay is initialized with the image chosen.</p>
+        </div>
+        
+        <div class="code">
+            <p>
+        var srcImage = '__________________';
+        
+        <br />
+      <br />
+        overlay = new Overlay(bounds, srcImage, map);
+        }
+            </p> 
+        </div>
+        
+        <div id="instructions">
+            <p>The next step is to set up the constructor function</p>
+            <p>This function will initialize all properties, define a property 
+            to hold the image's div and explicitly call setMap on this overlay.</p>
+            
+        </div>
+        <div class="code">
+            <p>
+        function Overlay(bounds, image, map) {
+<br />
+       <br />   
+          this.bounds_ = bounds;<br />
+          this.image_ = image;<br />
+          this.map_ = map;
+<br />
+    <br />
+          this.div_ = null;
+
+          <br />
+          this.setMap(map);<br />
+        }
+        
+            </p>
+        </div>
+         <div id="instructions">
+             <p>For the next step we'll use the onAdd function to be called when the map's 
+             panes are ready and teh overlay has been added to the map.</p>
+             <p>In the next code snippet we will also see how to create 
+             the image element and attach it to the div and add the element to 
+             the "overlayLayer" pane.</p>
+        </div>
+
+        <div class="code">
+            <p>
+Overlay.prototype.onAdd = function() {
+<br />
+  var div = document.createElement('div'); <br />
+  div.style.borderStyle = 'none'; <br />
+  div.style.borderWidth = '0px';<br />
+  div.style.position = 'absolute';<br />
+<br />
+  var img = document.createElement('img');<br />
+  img.src = this.image_;<br />
+  img.style.width = '100%';<br />
+  img.style.height = '100%';<br />
+  img.style.position = 'absolute';<br />
+  div.appendChild(img);<br />
+<br />
+  this.div_ = div;<br />
+<br />
+  var panes = this.getPanes();<br />
+  panes.overlayLayer.appendChild(div);<br />
+};  <br />
+   
+            </p>
+        </div>
+        
+        <div id="instructions">
+            <p>For the next section will use coordinates of the overlay to peg it to the correct 
+            position and size. The first step is to retrieve the projection from the overlay.</p>
+            <p>The onRemove() method will be called to from teh API automatically if we ever set
+            the overlay's map property to 'null'</p>
+        
+        </div>
+        
+        <div class="code">
+            <p>
+              Overlay.prototype.draw = function() { <br />
+<br />
+  var overlayProjection = this.getProjection();<br />
+<br />
+  var sw = overlayProjection.fromLatLngToDivPixel
+  (this.bounds_.getSouthWest());<br />
+  var ne = overlayProjection.fromLatLngToDivPixel
+  (this.bounds_.getNorthEast());<br />
+
+<br />
+  var div = this.div_;<br />
+  div.style.left = sw.x + 'px';<br />
+  div.style.top = ne.y + 'px';<br />
+  div.style.width = (ne.x - sw.x) + 'px';<br />
+  div.style.height = (sw.y - ne.y) + 'px';<br />
+};<br />
+<br />
+
+Overlay.prototype.onRemove = function() {<br />
+  this.div_.parentNode.removeChild(this.div_);<br />
+  this.div_ = null;<br />
+};<br />
+<br />
+google.maps.event.addDomListener(window, 'load', initialize);  <br />
+                <br />
+            </p>
+        </div>
+        
+         <div id="instructions">
+            <p>Et Voila! You have now successfully created your own custom overlay 
+            using the Google Maps API and Javascript! </p>
+        
+        </div>
+        
+        
+        
+        
+        <!--
+source: https://developers.google.com/maps/documentation/javascript/examples/overlay-simple
+-->
     </body>
 </html>
